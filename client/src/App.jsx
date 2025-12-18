@@ -107,13 +107,17 @@ function App() {
     }
   }, [pan, scale, drawHistory, view])
 
-  // --- 3. SOCKET CONNECTION ---
+  // --- 3. SOCKET CONNECTION (FIXED FOR DEPLOYMENT) ---
   useEffect(() => {
     if (view === "room" && !socket) {
-      const newSocket = io()
+
+      // ✅ READ FROM ENVIRONMENT VARIABLE (Render URL)
+      // If VITE_SERVER_URL is set (in Vercel), use it. Otherwise use localhost.
+      const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3001";
+      const newSocket = io(SERVER_URL);
 
       newSocket.on("connect", () => {
-        console.log("[v0] Connected to server")
+        console.log("[v0] Connected to server:", SERVER_URL)
         newSocket.emit("join-room", roomId, userName)
       })
 
