@@ -1,6 +1,7 @@
 # LiveBoard - Real-Time Collaborative Whiteboard
 
 A beautiful, production-ready collaborative whiteboard application with real-time drawing synchronization.
+> **🚀 Live Demo:** [https://infinite-whiteboard.vercel.app/](https://infinite-whiteboard.vercel.app/)
 
 ## Features
 
